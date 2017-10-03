@@ -307,6 +307,7 @@ export default class Graph extends React.Component {
     }
 
     componentWillUnmount() {
+      console.log('Stopping d3-force simulation')
       return !this.state.config.staticGraph && this.state.simulation.stop();
     }
 
