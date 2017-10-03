@@ -306,6 +306,10 @@ export default class Graph extends React.Component {
         this.state = this._initializeGraphState(this.props.data);
     }
 
+    componentWillUnmount() {
+      return !this.state.config.staticGraph && this.state.simulation.stop();
+    }
+
     componentWillReceiveProps(nextProps) {
         const newGraphElements = nextProps.data.nodes.length !== this.state.d3Nodes.length
                               || nextProps.data.links.length !== this.state.d3Links.length;
